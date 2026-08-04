@@ -1,0 +1,21 @@
+a little .txt file to note various steps or things i learned
+
+At first, i set up git on vs code for the first time, linking it to my Github account. 
+    Git pull and push requests:
+        with console is very hard at first i need to work on it a bit
+        while in the source controll is very similar to visual studio, 
+        the required messages, the commit and push option, the pull request on top. Nothing so new for now.
+
+This project is a local music player built with Python, PySide6, and a web-based interface using HTML, CSS, and JavaScript.
+
+Main features:
+- Load and browse music from a selected folder or drive
+- Scan common audio files such as MP3, WAV, FLAC, OGG, and others
+- Show track information like title, artist, album, and duration
+- Play, pause, stop, next, and previous track controls
+- Move through the song with a seek slider
+- Adjust volume
+- Display the track list and highlight the currently playing song
+- Show simple feedback messages for errors or status updates
+
+In short, it is a desktop music player with a stylish interface that lets users play local music files from their computer.
