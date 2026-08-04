@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Local Music Player</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="deck">
+
+    <!-- ============ TOP: chassis header with LCD readout ============ -->
+    <header class="chassis-top">
+      <div class="brand">
+        <span class="brand-mark">◈</span>
+        <span class="brand-name">LOCAL&nbsp;DECK</span>
+      </div>
+
+      <div class="lcd" id="lcd">
+        <div class="lcd-screen">
+          <div class="lcd-row lcd-title" id="lcdTitle">
+            <span id="lcdTitleText">NO TRACK LOADED</span>
+          </div>
+          <div class="lcd-row lcd-sub">
+            <span id="lcdArtist">—</span>
+            <span class="lcd-dot">•</span>
+            <span id="lcdAlbum">—</span>
+          </div>
+          <div class="vu-meter" id="vuMeter">
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+      </div>
+
+      <button class="open-btn" id="openBtn">
+        <span class="open-btn-icon">⏏</span>
+        Load Folder / Drive
+      </button>
+    </header>
+
+    <!-- ============ SEEK STRIP ============ -->
+    <div class="seek-strip">
+      <span class="time-readout" id="timeCurrent">0:00</span>
+      <input type="range" id="seekSlider" class="seek-slider" min="0" max="1000" value="0" step="1" />
+      <span class="time-readout" id="timeTotal">0:00</span>
+    </div>
+
+    <!-- ============ TRANSPORT ============ -->
+    <div class="transport">
+      <button class="deck-btn" id="prevBtn" title="Previous" aria-label="Previous track">
+        <svg viewBox="0 0 24 24"><path d="M6 4h2v16H6zM20 4v16L8 12z"/></svg>
+      </button>
+      <button class="deck-btn deck-btn-play" id="playBtn" title="Play / Pause" aria-label="Play or pause">
+        <svg id="playIcon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        <svg id="pauseIcon" viewBox="0 0 24 24" style="display:none"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+      </button>
+      <button class="deck-btn" id="stopBtn" title="Stop" aria-label="Stop">
+        <svg viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12"/></svg>
+      </button>
+      <button class="deck-btn" id="nextBtn" title="Next" aria-label="Next track">
+        <svg viewBox="0 0 24 24"><path d="M16 4h2v16h-2zM4 4v16l12-8z"/></svg>
+      </button>
+
+      <div class="volume-block">
+        <svg class="volume-icon" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4z"/></svg>
+        <input type="range" id="volumeSlider" class="volume-slider" min="0" max="100" value="80" />
+      </div>
+    </div>
+
+    <!-- ============ TRACK REEL (library list) ============ -->
+    <main class="reel-wrap">
+      <div class="reel-header">
+        <span class="reel-path" id="folderPath">No folder loaded yet</span>
+      </div>
+
+      <div class="reel-empty" id="emptyState">
+        <p class="reel-empty-title">Nothing loaded</p>
+        <p class="reel-empty-sub">Load a folder, USB drive, or SD card to see its tracks here.</p>
+      </div>
+
+      <table class="reel-table" id="trackTable" style="display:none">
+        <thead>
+          <tr>
+            <th class="col-index">#</th>
+            <th class="col-title">Title</th>
+            <th class="col-artist">Artist</th>
+            <th class="col-album">Album</th>
+            <th class="col-duration">Time</th>
+          </tr>
+        </thead>
+        <tbody id="trackBody"></tbody>
+      </table>
+    </main>
+
+    <div class="toast" id="toast"></div>
+  </div>
+
+  <script src="qrc:///qtwebchannel/qwebchannel.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
