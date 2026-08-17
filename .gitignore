@@ -1,0 +1,5 @@
+MusicPlayer/dist/
+MusicPlayer/build/
+__pycache__/
+*.pyc
+MusicPlayer/build/
