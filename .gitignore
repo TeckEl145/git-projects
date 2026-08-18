@@ -1,4 +1,4 @@
-MusicPlayer/dist/
+MusicPlayer/dist/LocalMusicPlayer/_internal
 MusicPlayer/build/
 __pycache__/
 *.pyc
