@@ -1,15 +1,3 @@
-"""
-Local Music Player — HTML/CSS/JS front end, Python/Qt back end
-----------------------------------------------------------------
-The window is a QWebEngineView rendering web/index.html (real CSS + real
-JavaScript). Python still owns file scanning, metadata reading, and audio
-playback (QMediaPlayer) — JS talks to it through a QWebChannel bridge.
-
-Run with:
-    pip install -r requirements.txt --break-system-packages
-    python main.py
-"""
-
 import json
 import os
 import sys
@@ -54,7 +42,6 @@ def read_track_info(filepath):
 
 
 class Bridge(QObject):
-    """Exposed to JavaScript. Slots are called FROM JS; signals are emitted TO JS."""
 
     tracksLoaded = Signal(str)          # JSON array of track dicts
     folderChanged = Signal(str)         # display text, e.g. "/media/usb (12 tracks)"
