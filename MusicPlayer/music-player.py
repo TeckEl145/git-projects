@@ -1,6 +1,7 @@
 import json
 import os
 import sys
+import random as rnd
 
 from PySide6.QtCore import QObject, Qt, QUrl, Signal, Slot
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog
@@ -139,6 +140,18 @@ class Bridge(QObject):
         if not self.tracks:
             return
         self.playTrack((self.current_index - 1) % len(self.tracks))
+
+    #shuffle play button, random selection
+
+    @Slot()
+    def shuffleTrack(self, index):
+        if index < 0 or index >= rnd(self.tracks):
+            return
+        self.current_index = index
+        track = self.tracks[index]
+        self.player.setSource(QUrl.fromLocalFile(track["path"]))
+        self.player.play()
+        self.nowPlayingChanged.emit(json.dumps({**track, "index": index}))
 
     @Slot(int)
     def seek(self, position_ms):
