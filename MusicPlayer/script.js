@@ -29,6 +29,7 @@ const el = {
   stopBtn: document.getElementById("stopBtn"),
   prevBtn: document.getElementById("prevBtn"),
   nextBtn: document.getElementById("nextBtn"),
+  shuffleBtn: document.getElementById("shuffleBtn"),
   volumeSlider: document.getElementById("volumeSlider"),
 
   toast: document.getElementById("toast"),
@@ -162,6 +163,7 @@ el.playBtn.addEventListener("click", () => bridge.togglePlayPause());
 el.stopBtn.addEventListener("click", () => bridge.stopPlayback());
 el.prevBtn.addEventListener("click", () => bridge.previousTrack());
 el.nextBtn.addEventListener("click", () => bridge.nextTrack());
+el.shuffleBtn.addEventListener("click", () => bridge.shuffleTrack());
 
 el.seekSlider.addEventListener("input", () => {
   isScrubbing = true;

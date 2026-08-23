@@ -141,17 +141,11 @@ class Bridge(QObject):
             return
         self.playTrack((self.current_index - 1) % len(self.tracks))
 
-    #shuffle play button, random selection
-
     @Slot()
-    def shuffleTrack(self, index):
-        if index < 0 or index >= rnd(self.tracks):
+    def shuffleTrack(self):
+        if not self.tracks:
             return
-        self.current_index = index
-        track = self.tracks[index]
-        self.player.setSource(QUrl.fromLocalFile(track["path"]))
-        self.player.play()
-        self.nowPlayingChanged.emit(json.dumps({**track, "index": index}))
+        self.playTrack(rnd.randrange(len(self.tracks)))
 
     @Slot(int)
     def seek(self, position_ms):
